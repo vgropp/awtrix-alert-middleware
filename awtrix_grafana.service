@@ -1,0 +1,15 @@
+[Unit]
+Description=AWTRIX Grafana Indicator Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody 
+WorkingDirectory=/opt 
+ExecStart=/usr/bin/python3 /opt/awtrix_grafana.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
