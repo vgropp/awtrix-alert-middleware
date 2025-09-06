@@ -132,13 +132,15 @@ def grafana_webhook():
     save_state()
     return "ok", 200
 
-@app.route("/reset", methods=["POST","GET"])
+
+@app.route("/reset", methods=["POST", "GET"])
 def reset():
     global desired_state, desired_alert_count
     desired_state = "off"
     desired_alert_count = 0
     logger.info("Manual reset triggered")
     return "reset done", 200
+
 
 def shutdown_handler(sig, frame):
     logger.info("Shutting down gracefully...")
@@ -154,4 +156,3 @@ if __name__ == "__main__":
     t = Thread(target=retry_worker, daemon=True)
     t.start()
     app.run(host="0.0.0.0", port=8181)
-
