@@ -98,7 +98,6 @@ def set_awtrix_notification(count: int):
 
 
 def retry_worker():
-    global desired_state, desired_alert_count
     while not stop_event.is_set():
         if desired_state and desired_state != current_state:
             if not set_awtrix_indicator(desired_state):
